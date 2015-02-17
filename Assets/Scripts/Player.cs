@@ -13,7 +13,7 @@ public class Player : MovingObject {
 
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
 		animator = GetComponent<Animator>();
 
 		food = GameManager.instance.playerFoodPoints;
@@ -32,8 +32,8 @@ public class Player : MovingObject {
 		int horizontal = 0;
 		int vertical = 0;
 
-		horizontal = (int) Input.GetAxisRaw("Horizontal");
-		vertical = (int) Input.GetAxisRaw("Vertical");
+		horizontal = (int) (Input.GetAxisRaw("Horizontal"));
+		vertical = (int) (Input.GetAxisRaw("Vertical"));
 
 		if(horizontal != 0) {
 			vertical = 0;

@@ -6,14 +6,14 @@ public abstract class MovingObject : MonoBehaviour {
 	public float moveTime = 0.1f;
 	public LayerMask blockingLayer;
 
-	private BoxCollider2D boxColider;
+	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
 	private float inverseMoveTime;
 
 
 	// Use this for initialization
 	protected virtual void Start () {
-		boxColider = GetComponent<BoxCollider2D>();
+		boxCollider = GetComponent<BoxCollider2D>();
 		rb2D = GetComponent<Rigidbody2D>();
 		inverseMoveTime = 1f / moveTime;
 	}
@@ -22,9 +22,9 @@ public abstract class MovingObject : MonoBehaviour {
 		Vector2 start = transform.position;
 		Vector2 end = start + new Vector2(xDir, yDir);
 
-		boxColider.enabled = false;
+		boxCollider.enabled = false;
 		hit = Physics2D.Linecast(start, end, blockingLayer);
-		boxColider.enabled = true;
+		boxCollider.enabled = true;
 
 		if(hit.transform == null) {
 			StartCoroutine(SmoothMovement(end));
